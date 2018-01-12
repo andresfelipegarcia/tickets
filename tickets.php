@@ -15,7 +15,7 @@
                     ?>
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Gastos</h2>
+                            <h2>Tickets</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -110,6 +110,7 @@ $( "#upd" ).submit(function( event ) {
         var category_id = $("#category_id"+id).val();
         var priority_id = $("#priority_id"+id).val();
         var status_id = $("#status_id"+id).val();
+        var asgined_id = $("#asigned_id").val();
             $("#mod_id").val(id);
             $("#mod_title").val(title);
             $("#mod_description").val(description);
@@ -118,6 +119,8 @@ $( "#upd" ).submit(function( event ) {
             $("#mod_category_id").val(category_id);
             $("#mod_priority_id").val(priority_id);
             $("#mod_status_id").val(status_id);
+            $("#mod_asigned_id").val(asigned_id);
+
         }
 
 </script>

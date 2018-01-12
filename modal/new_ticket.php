@@ -4,6 +4,7 @@
     $statuses =mysqli_query($con, "select * from status");
     $kinds =mysqli_query($con, "select * from kind");
     $categories =mysqli_query($con, "select * from category");
+    $asigned = mysqli_query($con,"select * from user");
 ?>
 
     <div> <!-- Modal -->
@@ -45,7 +46,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Proyecto
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Entidad
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="form-control" name="project_id" >
@@ -87,6 +88,19 @@
                                 <select class="form-control" name="status_id" >
                                     <option selected="" value="">-- Selecciona --</option>
                                   <?php foreach($statuses as $p):?>
+                                    <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
+                                  <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Cargar nombres de usuarios para el ticket ser asignado-->
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Asignar
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="form-control" name="asigned_id" >
+                                    <option selected="" value="">-- Selecciona --</option>
+                                  <?php foreach($asigned as $p):?>
                                     <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                   <?php endforeach; ?>
                                 </select>

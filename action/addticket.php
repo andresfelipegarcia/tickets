@@ -21,11 +21,12 @@
 		$user_id = $_SESSION["user_id"];
 		$status_id = $_POST["status_id"];
 		$kind_id = $_POST["kind_id"];
+		$asigned_id = $_POST["asigned_id"];
 		$created_at="NOW()";
 
 		// $user_id=$_SESSION['user_id'];
 
-		$sql="insert into ticket (title,description,category_id,project_id,priority_id,user_id,status_id,kind_id,created_at) value (\"$title\",\"$description\",\"$category_id\",\"$project_id\",$priority_id,$user_id,$status_id,$kind_id,$created_at)";
+		$sql="insert into ticket (title,description,category_id,project_id,priority_id,user_id,asigned_id,status_id,kind_id,created_at) value (\"$title\",\"$description\",\"$category_id\",\"$project_id\",$priority_id,$user_id,$asigned_id,$status_id,$kind_id,$created_at)";
 
 		$query_new_insert = mysqli_query($con,$sql);
 			if ($query_new_insert){

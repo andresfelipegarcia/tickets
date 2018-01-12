@@ -6,7 +6,7 @@ function load(page){
 	var q= $("#q").val();
 	$("#loader").fadeIn('slow');
 	$.ajax({
-		url:'./ajax/tickets_users.php?action=ajax&page='+page+'&q='+q,
+		url:'./ajax/tickets.php?action=ajax&page='+page+'&q='+q,
 		beforeSend: function(objeto){
 			$('#loader').html('<img src="./images/ajax-loader.gif"> Cargando...');
 		},
@@ -16,7 +16,6 @@ function load(page){
 		}
 	})
 }
-
 
 
 function eliminar (id)

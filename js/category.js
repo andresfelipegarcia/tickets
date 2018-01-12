@@ -18,8 +18,6 @@ function load(page){
 	})
 }
 
-
-
 function eliminar (id)
 {
 	var q= $("#q").val();

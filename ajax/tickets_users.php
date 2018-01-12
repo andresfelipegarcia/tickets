@@ -1,20 +1,11 @@
-<?php 
-   
-    include "../config/config.php";//Contiene funcion que conecta a la base de datos
-    session_start();
-    echo "<script language='javascript'> console.log('user_id_tickets' +'->'+ '$id' ); </script>";     
-    ?>
-
 <?php
 
-    
-
+    include "../config/config.php";//Contiene funcion que conecta a la base de datos
     
     $action = (isset($_REQUEST['action']) && $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
     if (isset($_GET['id'])){
         $id_del=intval($_GET['id']);
         $query=mysqli_query($con, "SELECT * from ticket where id='".$id_del."'");
-          
         $count=mysqli_num_rows($query);
 
             if ($delete1=mysqli_query($con,"DELETE FROM ticket WHERE id='".$id_del."'")){
@@ -36,26 +27,21 @@
     ?>
 
 <?php
-
-    
     if($action == 'ajax'){
         // escaping, additionally removing everything that could be (html/javascript-) code
-            
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
          $aColumns = array('title');//Columnas de busqueda
          $sTable = "ticket";
          $sWhere = "";
-       
         if ( $_GET['q'] != "" )
         {
             $sWhere = "WHERE (";
             for ( $i=0 ; $i<count($aColumns) ; $i++ )
             {
                 $sWhere .= $aColumns[$i]." LIKE '%".$q."%' OR ";
-                 
             }
             $sWhere = substr_replace( $sWhere, "", -3 );
-            $sWhere .= ' )';
+            $sWhere .= ')';
         }
         $sWhere.=" order by created_at desc";
         include 'pagination.php'; //include pagination file
@@ -66,16 +52,13 @@
         $offset = ($page - 1) * $per_page;
         //Count the total number of row in your table*/
         $count_query   = mysqli_query($con, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
-        
         $row= mysqli_fetch_array($count_query);
         $numrows = $row['numrows'];
         $total_pages = ceil($numrows/$per_page);
         $reload = './expences.php';
         //main query to fetch the data
-        $sql="(SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page)";
+        $sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
         $query = mysqli_query($con, $sql);
-
-        
         //loop through fetched data
         if ($numrows>0){
             
@@ -103,8 +86,7 @@
                             $status_id=$r['status_id'];
                             $kind_id=$r['kind_id'];
                             $category_id=$r['category_id'];
-                            $user_id = $r['user_id'];
-                            
+
                             $sql = mysqli_query($con, "select * from project where id=$project_id");
                             if($c=mysqli_fetch_array($sql)) {
                                 $name_project=$c['name'];
@@ -142,7 +124,7 @@
                         <td><?php echo $created_at;?></td>
                         <td ><span class="pull-right">
                         <a href="#" class='btn btn-default' title='Editar producto' onclick="obtener_datos('<?php echo $id;?>');" data-toggle="modal" data-target=".bs-example-modal-lg-udp"><i class="glyphicon glyphicon-edit"></i></a> 
-                        <a href="#" class='btn btn-default' title='Borrar producto' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
+                        </span></td>
                     </tr>
                 <?php
                     } //en while

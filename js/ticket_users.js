@@ -1,8 +1,8 @@
 $(document).ready(function(){
-	load(1);
+	load_users(1);
 });
 
-function load(page){
+function load_users(page){
 	var q= $("#q").val();
 	$("#loader").fadeIn('slow');
 	$.ajax({
