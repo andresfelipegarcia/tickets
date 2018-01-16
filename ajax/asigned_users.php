@@ -39,7 +39,7 @@
         $reload = './expences.php';
         //main query to fetch the data
         //$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
-        $sql="SELECT * FROM  ticket where user_id = '$user_id'";
+        $sql="SELECT * FROM  ticket where asigned_id = '$user_id'";
         $query = mysqli_query($con, $sql);
         //loop through fetched data
         if ($numrows>0){
@@ -48,7 +48,7 @@
             <table class="table table-striped jambo_table bulk_action">
                 <thead>
                     <tr class="headings">
-                        <th class="column-title">Asunto </th>
+                        <th class="column-title">Asuntos </th>
                         <th class="column-title">Proyecto </th>
                         <th class="column-title">Prioridad </th>
                         <th class="column-title">Estado </th>

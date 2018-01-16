@@ -6,7 +6,7 @@ function load_users(page){
 	var q= $("#q").val();
 	$("#loader").fadeIn('slow');
 	$.ajax({
-		url:'./ajax/tickets_users.php?action=ajax&page='+page+'&q='+q,
+		url:'./ajax/asigned_users.php?action=ajax&page='+page+'&q='+q,
 		beforeSend: function(objeto){
 			$('#loader').html('<img src="./images/ajax-loader.gif"> Cargando...');
 		},

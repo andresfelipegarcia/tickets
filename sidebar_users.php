@@ -9,6 +9,10 @@
                         <a href="tickets_users.php"><i class="fa fa-ticket"></i> Tickets</a>
                     </li>
 
+                    <li class="<?php if(isset($active6)){echo $active6;}?>">
+                        <a href="asigned_tickets.php"><i class="fa fa-ticket"></i> Asignados</a>
+                    </li>
+
                     <li class="<?php if(isset($active3)){echo $active3;}?>">
                         <a href="projects_users.php"><i class="fa fa-list-alt"></i> Proyectos</a>
                     </li>
